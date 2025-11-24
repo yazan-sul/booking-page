@@ -44,7 +44,7 @@ const PatientDetailsStep: React.FC<Props> = ({
   onNotesChange,
 }) => {
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 p-4">
       {/* Summary */}
       <div className="bg-gray-50 dark:bg-gray-700 p-5 rounded-xl">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
@@ -73,7 +73,7 @@ const PatientDetailsStep: React.FC<Props> = ({
           type="text"
           value={patientName}
           onChange={(e) => onNameChange(e.target.value)}
-          className="w-full mt-2 border rounded-lg p-3 dark:bg-gray-700 dark:text-white dark:border-gray-500"
+          className="w-full mt-2 border border-gray-300 rounded-lg p-3 dark:bg-gray-700 dark:text-white dark:border-gray-500"
           placeholder="Enter your full name"
         />
       </div>
@@ -87,7 +87,7 @@ const PatientDetailsStep: React.FC<Props> = ({
           type="email"
           value={patientEmail}
           onChange={(e) => onEmailChange(e.target.value)}
-          className="w-full mt-2 border rounded-lg p-3 dark:bg-gray-700 dark:text-white dark:border-gray-500"
+          className="w-full mt-2 border border-gray-300 rounded-lg p-3 dark:bg-gray-700 dark:text-white dark:border-gray-500"
           placeholder="Enter your email"
         />
       </div>
@@ -101,7 +101,7 @@ const PatientDetailsStep: React.FC<Props> = ({
           type="tel"
           value={patientPhone}
           onChange={(e) => onPhoneChange(e.target.value)}
-          className="w-full mt-2 border rounded-lg p-3 dark:bg-gray-700 dark:text-white dark:border-gray-500"
+          className="w-full mt-2 border border-gray-300 rounded-lg p-3 dark:bg-gray-700 dark:text-white dark:border-gray-500"
           placeholder="Enter your phone number"
         />
       </div>
@@ -115,7 +115,7 @@ const PatientDetailsStep: React.FC<Props> = ({
           value={notes}
           onChange={(e) => onNotesChange(e.target.value)}
           rows={4}
-          className="w-full mt-2 border rounded-lg p-3 dark:bg-gray-700 dark:text-white dark:border-gray-500"
+          className="w-full mt-2 border border-gray-300 rounded-lg p-3 dark:bg-gray-700 dark:text-white dark:border-gray-500"
           placeholder="Any additional instructions?"
         />
       </div>

@@ -71,14 +71,14 @@ const Menu: React.FC<MenuProps> = ({
               onMouseEnter={() => item.onHover?.()}
               onMouseLeave={() => item.onLeave?.()}
               className={`
-                flex items-center gap-2 px-3 py-2 rounded-lg 
+                flex items-center border border-gray-200 gap-2 px-3 py-2 rounded-lg 
                 transition-colors w-full
                 ${
                   isActive
                     ? "bg-green-100 dark:bg-green-900"
                     : isHovered
                     ? "bg-blue-100 dark:bg-blue-900"
-                    : "hover:bg-gray-100 dark:hover:bg-gray-700"
+                    : "hover:bg-gray-50 dark:hover:bg-gray-700"
                 }
               `}
             >

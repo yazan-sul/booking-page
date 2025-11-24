@@ -51,12 +51,6 @@ const BookingPage: React.FC = () => {
 
   const doctors: Doctor[] = [
     {
-      id: "1",
-      name: "Ahmad Dimas",
-      specialization: "General Medicine",
-      credentials: "Sp.BM, M.Kes",
-    },
-    {
       id: "2",
       name: "Sarah Johnson",
       specialization: "Dentistry",

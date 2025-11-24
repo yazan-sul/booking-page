@@ -107,10 +107,10 @@ const ServiceSelectionStep: React.FC<Props> = ({
   ];
 
   return (
-    <div className="min-h-96 space-y-8 p-3">
+    <div className="min-h-96 w-sm space-y-8 py-8 px-10">
       {/* Service Selection */}
       <div>
-        <label className="block text-lg font-semibold text-gray-800 dark:text-white mb-3">
+        <label className="block text-lg   font-semibold text-gray-800 dark:text-white mb-3">
           Select Service
         </label>
         <Menu
@@ -121,7 +121,7 @@ const ServiceSelectionStep: React.FC<Props> = ({
         />
         {selectedServiceObj && (
           <div className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            {selectedServiceObj.duration} • {selectedServiceObj.price}
+            {selectedServiceObj.name}
           </div>
         )}
       </div>
@@ -139,7 +139,7 @@ const ServiceSelectionStep: React.FC<Props> = ({
         />
         {selectedDoctorObj && (
           <div className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            {selectedDoctorObj.specialization} — {selectedDoctorObj.credentials}
+            {selectedDoctorObj.name} — {selectedDoctorObj.specialization}
           </div>
         )}
       </div>
