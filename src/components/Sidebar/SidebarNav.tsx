@@ -1,10 +1,9 @@
 import React from "react";
 import SidebarItem from "./SidebarItem";
-
 interface NavItem {
   name: string;
   href: string;
-  icon: React.ElementType;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 interface SidebarNavProps {
@@ -23,7 +22,7 @@ const SidebarNav: React.FC<SidebarNavProps> = ({
   const isActive = (href: string) => pathname.startsWith(href);
 
   return (
-    <nav className="flex-1 p-4 overflow-y-auto">
+    <nav className="flex-1 p-4 overflow-y">
       <ul className="space-y-1">
         {items.map((item) => (
           <SidebarItem

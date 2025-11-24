@@ -5,7 +5,7 @@ import Tooltip from "../ToolTip";
 interface SidebarItemProps {
   name: string;
   href: string;
-  icon: React.ElementType;
+  icon: React.ComponentType<{ className?: string }>;
   isOpen: boolean;
   isActive: boolean;
   onClick?: () => void;
@@ -23,7 +23,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     <Link
       href={href}
       className={`
-        flex items-center gap-3 px-3 py-2.5 rounded-lg
+        flex items-center gap-3 px-2 py-2.5 rounded-lg
         transition-colors duration-200 relative
         ${
           isActive

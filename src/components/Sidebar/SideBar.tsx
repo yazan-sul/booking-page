@@ -18,7 +18,7 @@ import {
 interface NavItem {
   name: string;
   href: string;
-  icon: React.ElementType;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 interface SidebarProps {
@@ -37,7 +37,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
   const mainNavItems: NavItem[] = [
     { name: "Booking", href: "/booking", icon: Calendar },
-    { name: "Billing", href: "/patient", icon: CreditCard },
+    { name: "Patient", href: "/patient", icon: CreditCard },
     { name: "Pricing", href: "/pricing", icon: DollarSign },
   ];
 
