@@ -24,6 +24,7 @@ const getConditionColor = (cond: Tooth["condition"]) => {
 };
 
 const ToothDetails: React.FC<Props> = ({ selectedTooth, teethData }) => {
+  console.log(selectedTooth);
   if (!selectedTooth)
     return (
       <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 text-center">

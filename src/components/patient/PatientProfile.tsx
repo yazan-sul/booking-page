@@ -41,12 +41,12 @@ const PatientProfile: React.FC = () => {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
   const patient: Patient = {
-    name: "Ahmad Dimas",
-    age: 32,
+    name: "Yazan Sulaiman",
+    age: 22,
     gender: "Male",
     bloodType: "A+",
     phone: "+1 (555) 123-4567",
-    email: "ahmad.dimas@email.com",
+    email: "Yazan.sulaiman@email.com",
     address: "123 Main St, New York, NY 10001",
     dateOfBirth: "1991-05-15",
     lastVisit: "2024-11-15",
@@ -63,18 +63,15 @@ const PatientProfile: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 p-4 md:p-8">
-      <div className="max-w-7xl mx-auto space-y-6">
+      <div className="max-w-7xl mx-auto space-y-8">
         <PatientHeader patient={patient} />
-
-        <TeethContainer />
-        <ToothDetails selectedTooth={selectedTooth} teethData={teethData} />
-        <div className="grid md:grid-cols-2 gap-6">
-          <PatientContact patient={patient} />
-          <PatientAppointments patient={patient} />
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="flex flex-col gap-4">
+            <PatientContact patient={patient} />
+            <PatientAppointments patient={patient} />
+          </div>
+          <TeethContainer />
         </div>
-        <Legend />
-
-        <MedicalHistory medicalHistory={medicalHistory} />
       </div>
     </div>
   );
