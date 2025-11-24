@@ -154,11 +154,11 @@ const BookingPage: React.FC = () => {
   const getSelectedDoctor = () => doctors.find((d) => d.id === selectedDoctor);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-green-100 dark:from-gray-900 dark:to-gray-800 p-4 md:p-8">
+    <div className="bg-gradient-to-br from-teal-50 to-green-100 dark:from-gray-900 dark:to-gray-800 p-2 md:p-6">
       <div className="max-w-4xl mx-auto">
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-br from-teal-200 to-teal-400 dark:from-teal-700 dark:to-teal-600 p-6 md:p-8">
+          <div className="bg-gradient-to-br from-teal-200 to-teal-400 dark:from-teal-700 dark:to-teal-600 p-4 md:p-6">
             <h1 className="text-3xl md:text-4xl font-bold text-teal-800 dark:text-white">
               Book Appointment
             </h1>
