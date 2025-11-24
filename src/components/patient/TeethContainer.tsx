@@ -1,7 +1,8 @@
 // TeethContainer.tsx
 import React, { useState } from "react";
-import Menu from "@/components/Menu";
+
 import EnhancedTeethViewer from "./DentalChart";
+import TeethMenu from "./TeethMenu";
 
 export default function TeethContainer() {
   const [hoveredTooth, setHoveredTooth] = useState<string | null>(null);
@@ -55,19 +56,19 @@ export default function TeethContainer() {
   }));
 
   return (
-    <div className="flex w-full h-full">
-      <Menu
-        items={teethMenuItems}
+    <div className="flex flex w-full h-full ">
+      <TeethMenu
         hoveredTooth={hoveredTooth}
         setHoveredTooth={setHoveredTooth}
         setSelectedTooth={setSelectedTooth}
+        selectedTooth={selectedTooth}
       />
-
-      <div className="flex-1">
+      <div className="flex-1 bg-amber-50 p-2">
         <EnhancedTeethViewer
-          hoveredTooth={hoveredTooth}
-          setHoveredTooth={setHoveredTooth}
-          setSelectedTooth={setSelectedTooth}
+          externalHoveredTooth={hoveredTooth}
+          externalSelectedTooth={selectedTooth}
+          onToothClick={(tooth) => setSelectedTooth(tooth.name)}
+          onToothHover={(tooth) => setHoveredTooth(tooth?.name || null)}
         />
       </div>
     </div>

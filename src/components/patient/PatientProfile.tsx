@@ -8,6 +8,7 @@ import EnhancedTeethViewer from "./DentalChart";
 import ToothDetails from "./ToothDetails";
 import Legend from "./Legend";
 import MedicalHistory from "./MedicalHistory";
+import TeethContainer from "./TeethContainer";
 
 export interface Patient {
   name: string;
@@ -71,8 +72,7 @@ const PatientProfile: React.FC = () => {
           <PatientAppointments patient={patient} />
         </div>
 
-        <EnhancedTeethViewer />
-
+        <TeethContainer />
         <ToothDetails selectedTooth={selectedTooth} teethData={teethData} />
 
         <Legend />

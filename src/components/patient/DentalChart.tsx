@@ -1,5 +1,4 @@
 import React, { Suspense, useRef, useState, useEffect } from "react";
-
 import { Canvas, ThreeEvent } from "@react-three/fiber";
 import {
   OrbitControls as DreiOrbitControls,
@@ -13,7 +12,6 @@ import type { OrbitControls as DreiOrbitControlsType } from "three-stdlib";
 
 const TOOTH_MAPPING: Record<string, string> = {
   // Upper Right Quadrant (11-18)
-  // 'polySurface39051': 'Tooth 11 - Central Incisor',  // ❌ Not a tooth (removed)
   polySurface39052: "Tooth 12 - Lateral Incisor",
   polySurface39053: "Tooth 13 - Canine",
   polySurface39054: "Tooth 14 - First Premolar",
@@ -80,6 +78,8 @@ interface ModelProps {
   url: string;
   onToothClick?: (tooth: ToothInfo) => void;
   onToothHover?: (tooth: ToothInfo | null) => void;
+  externalHoveredTooth?: string | null;
+  externalSelectedTooth?: string | null;
 }
 
 const NON_TOOTH_MESHES = new Set([
@@ -88,7 +88,13 @@ const NON_TOOTH_MESHES = new Set([
   "polySurface44003",
 ]);
 
-function Model({ url, onToothClick, onToothHover }: ModelProps) {
+function Model({
+  url,
+  onToothClick,
+  onToothHover,
+  externalHoveredTooth,
+  externalSelectedTooth,
+}: ModelProps) {
   const { scene } = useGLTF(url);
 
   // Store original materials to restore after hover
@@ -104,6 +110,31 @@ function Model({ url, onToothClick, onToothHover }: ModelProps) {
       }
     });
   }, [scene]);
+
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (child instanceof THREE.Mesh && !NON_TOOTH_MESHES.has(child.name)) {
+        const original = originalMaterials.current.get(child.uuid);
+        if (!original) return;
+
+        if (child.name === externalSelectedTooth) {
+          const mat = (
+            Array.isArray(original) ? original[0] : original
+          ).clone();
+          (mat as THREE.MeshStandardMaterial).color.set(0x90ee90);
+          child.material = mat;
+        } else if (child.name === externalHoveredTooth) {
+          const mat = (
+            Array.isArray(original) ? original[0] : original
+          ).clone();
+          (mat as THREE.MeshStandardMaterial).color.set(0x87ceeb);
+          child.material = mat;
+        } else {
+          child.material = original;
+        }
+      }
+    });
+  }, [scene, externalHoveredTooth, externalSelectedTooth]);
 
   const handlePointerMove = (e: ThreeEvent<PointerEvent>) => {
     const mesh = e.object as THREE.Mesh;
@@ -165,6 +196,7 @@ function Model({ url, onToothClick, onToothHover }: ModelProps) {
     </Center>
   );
 }
+
 function Loader() {
   return (
     <Html center>
@@ -173,8 +205,20 @@ function Loader() {
   );
 }
 
+interface EnhancedTeethViewerProps {
+  externalHoveredTooth?: string | null;
+  externalSelectedTooth?: string | null;
+  onToothClick?: (tooth: ToothInfo) => void;
+  onToothHover?: (tooth: ToothInfo | null) => void;
+}
+
 // Main viewer
-export default function EnhancedTeethViewer() {
+export default function EnhancedTeethViewer({
+  externalHoveredTooth,
+  externalSelectedTooth,
+  onToothClick,
+  onToothHover,
+}: EnhancedTeethViewerProps = {}) {
   const [selectedTooth, setSelectedTooth] = useState<ToothInfo | null>(null);
   const [hoveredTooth, setHoveredTooth] = useState<ToothInfo | null>(null);
 
@@ -189,6 +233,16 @@ export default function EnhancedTeethViewer() {
     }
   };
 
+  const handleToothClick = (tooth: ToothInfo) => {
+    setSelectedTooth(tooth);
+    onToothClick?.(tooth);
+  };
+
+  const handleToothHover = (tooth: ToothInfo | null) => {
+    setHoveredTooth(tooth);
+    onToothHover?.(tooth);
+  };
+
   return (
     <div className="relative w-full h-screen">
       <Canvas>
@@ -200,8 +254,10 @@ export default function EnhancedTeethViewer() {
         <Suspense fallback={<Loader />}>
           <Model
             url="/T.glb"
-            onToothClick={setSelectedTooth}
-            onToothHover={setHoveredTooth}
+            onToothClick={handleToothClick}
+            onToothHover={handleToothHover}
+            externalHoveredTooth={externalHoveredTooth}
+            externalSelectedTooth={externalSelectedTooth}
           />
         </Suspense>
         <DreiOrbitControls

@@ -77,7 +77,11 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
       </div>
 
       {/* Right side: theme/language menu */}
-      <Menu items={topMenuItems} hideMainName={true} className="flex gap-2" />
+      <Menu
+        items={topMenuItems}
+        hideMainName={true}
+        className="flex flex-row gap-2"
+      />
     </header>
   );
 };
