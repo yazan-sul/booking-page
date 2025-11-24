@@ -19,16 +19,23 @@ export default function RootLayout({
       <head />
       <body>
         <ThemeProvider>
-          <div className="flex h-screen bg-white">
+          <div className="flex  bg-white">
+            {/* Sidebar */}
             <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+
+            {/* Main content area */}
             <div className="flex-1 flex flex-col">
+              {/* Navigation Bar */}
               <NavBar
                 isSidebarOpen={isSidebarOpen}
                 toggleSidebar={toggleSidebar}
                 pageTitle="My App"
               />
 
-              {children}
+              {/* Children content */}
+              <main className="flex-1 overflow-auto p-8 bg-white dark:bg-gray-800">
+                {children}
+              </main>
             </div>
           </div>
         </ThemeProvider>

@@ -17,7 +17,7 @@ export interface Patient {
   nextAppointment: string;
 }
 const PatientAppointments: React.FC<Props> = ({ patient }) => (
-  <div className="bg-white dark:bg-gray-500 dark:text-white rounded-2xl shadow-lg p-6">
+  <div className="bg-gray-50 dark:bg-gray-500 dark:text-white rounded-2xl shadow-lg p-6">
     <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
       Appointments
     </h2>

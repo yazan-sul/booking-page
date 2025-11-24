@@ -9,7 +9,7 @@ export default function TeethContainer() {
   const [selectedTooth, setSelectedTooth] = useState<string | null>(null);
 
   return (
-    <div className="flex  w-full h-full bg-white dark:bg-gray-500 rounded-2xl shadow-lg p-2">
+    <div className="flex  w-full h-full bg-gray-50 dark:bg-gray-500 dark:text-white rounded-2xl shadow-lg p-2">
       <TeethMenu
         hoveredTooth={hoveredTooth}
         setHoveredTooth={setHoveredTooth}

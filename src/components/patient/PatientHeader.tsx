@@ -16,7 +16,7 @@ interface Props {
 }
 const PatientHeader: React.FC<Props> = ({ patient }) => {
   return (
-    <div className="bg-white dark:bg-gray-500 dark:text-white rounded-2xl shadow-lg p-6">
+    <div className="bg-gray-50 dark:bg-gray-500 dark:text-white rounded-2xl shadow-lg p-6">
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Left Side */}
         <div className="flex items-center gap-4">

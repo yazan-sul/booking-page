@@ -54,7 +54,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       ref={sidebarRef}
       className={`${isMobile ? "fixed" : "relative"} ${
         isMobile && !isOpen ? "-translate-x-full" : "translate-x-0"
-      } ${sidebarWidth} h-screen bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out flex flex-col shadow-xl`}
+      } ${sidebarWidth} min-h-screen bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out flex flex-col shadow-xl pb-4`}
       aria-label="Main navigation"
     >
       <SidebarHeader
