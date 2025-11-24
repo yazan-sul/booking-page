@@ -56,14 +56,14 @@ export default function TeethContainer() {
   }));
 
   return (
-    <div className="flex flex w-full h-full ">
+    <div className="flex  w-full h-full bg-amber-50 ">
       <TeethMenu
         hoveredTooth={hoveredTooth}
         setHoveredTooth={setHoveredTooth}
         setSelectedTooth={setSelectedTooth}
         selectedTooth={selectedTooth}
       />
-      <div className="flex-1 bg-amber-50 p-2">
+      <div className="flex  p-2">
         <EnhancedTeethViewer
           externalHoveredTooth={hoveredTooth}
           externalSelectedTooth={selectedTooth}

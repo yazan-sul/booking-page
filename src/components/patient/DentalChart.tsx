@@ -51,21 +51,6 @@ const TOOTH_MAPPING: Record<string, string> = {
   polySurface39082: "Tooth 48 - Third Molar",
 };
 
-interface ViewPreset {
-  name: string;
-  position: [number, number, number];
-  target: [number, number, number];
-}
-
-const VIEW_PRESETS: Record<string, ViewPreset> = {
-  front: { name: "Front", position: [0, 0, 5], target: [0, 0, 0] },
-  back: { name: "Back", position: [0, 0, -5], target: [0, 0, 0] },
-  left: { name: "Left", position: [-5, 0, 0], target: [0, 0, 0] },
-  right: { name: "Right", position: [5, 0, 0], target: [0, 0, 0] },
-  top: { name: "Top", position: [0, 5, 0], target: [0, 0, 0] },
-  bottom: { name: "Bottom", position: [0, -5, 0], target: [0, 0, 0] },
-};
-
 // Tooth info type
 interface ToothInfo {
   mesh: THREE.Mesh;
@@ -225,14 +210,6 @@ export default function EnhancedTeethViewer({
   // Properly typed OrbitControls ref
   const controlsRef = useRef<DreiOrbitControlsType>(null);
 
-  const handleViewPreset = (preset: ViewPreset) => {
-    if (controlsRef.current) {
-      controlsRef.current.target.set(...preset.target);
-      controlsRef.current.object.position.set(...preset.position);
-      controlsRef.current.update();
-    }
-  };
-
   const handleToothClick = (tooth: ToothInfo) => {
     setSelectedTooth(tooth);
     onToothClick?.(tooth);
@@ -244,12 +221,12 @@ export default function EnhancedTeethViewer({
   };
 
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative w-2xl h-80">
       <Canvas>
-        <PerspectiveCamera makeDefault position={[0, 0, 0.5]} fov={50} />
+        <PerspectiveCamera makeDefault position={[0, 0, 0.2]} fov={50} />
 
         <ambientLight intensity={0.5} />
-        <directionalLight position={[5, 5, 5]} intensity={1} />
+        <directionalLight position={[2, 2, 2]} intensity={1} />
 
         <Suspense fallback={<Loader />}>
           <Model

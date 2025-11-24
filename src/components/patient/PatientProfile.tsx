@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import PatientHeader from "./PatientHeader";
 import PatientContact from "./PatientContact";
 import PatientAppointments from "./PatientAppointments";
-import EnhancedTeethViewer from "./DentalChart";
 import ToothDetails from "./ToothDetails";
 import Legend from "./Legend";
 import MedicalHistory from "./MedicalHistory";
@@ -67,14 +66,12 @@ const PatientProfile: React.FC = () => {
       <div className="max-w-7xl mx-auto space-y-6">
         <PatientHeader patient={patient} />
 
+        <TeethContainer />
+        <ToothDetails selectedTooth={selectedTooth} teethData={teethData} />
         <div className="grid md:grid-cols-2 gap-6">
           <PatientContact patient={patient} />
           <PatientAppointments patient={patient} />
         </div>
-
-        <TeethContainer />
-        <ToothDetails selectedTooth={selectedTooth} teethData={teethData} />
-
         <Legend />
 
         <MedicalHistory medicalHistory={medicalHistory} />
