@@ -1,37 +1,28 @@
+// components/NavBar.tsx
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Sun, Moon, Globe, Laptop, PanelLeft } from "lucide-react";
 import Menu, { MenuItem } from "./Menu";
+import { useTheme } from "@/context/ThemeContext"; // Use ThemeContext to access theme state
 
 interface TopNavbarProps {
   isSidebarOpen: boolean;
   toggleSidebar: () => void;
   pageTitle: string;
 }
+
 const TopNavbar: React.FC<TopNavbarProps> = ({
   isSidebarOpen,
   toggleSidebar,
   pageTitle,
 }) => {
-  const [themeMode, setThemeMode] = React.useState<"light" | "dark" | "system">(
-    "system"
-  );
+  const { theme, toggleTheme } = useTheme(); // Get theme and toggle function from context
   const [language, setLanguage] = React.useState<"EN" | "ES">("EN");
 
-  const isDarkMode =
-    themeMode === "dark" ||
-    (themeMode === "system" &&
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches);
+  // Check if the current theme is dark
+  const isDarkMode = theme === "dark";
 
-  React.useEffect(() => {
-    if (isDarkMode) document.documentElement.classList.add("dark");
-    else document.documentElement.classList.remove("dark");
-  }, [isDarkMode]);
-
-  const toggleDarkMode = (mode: "light" | "dark" | "system") =>
-    setThemeMode(mode);
   const toggleLanguage = (lang: "EN" | "ES") => setLanguage(lang);
 
   const topMenuItems: MenuItem[] = [
@@ -39,12 +30,12 @@ const TopNavbar: React.FC<TopNavbarProps> = ({
       name: "Theme",
       icon: isDarkMode ? Moon : Sun,
       subItems: [
-        { name: "Light", icon: Sun, onClick: () => toggleDarkMode("light") },
-        { name: "Dark", icon: Moon, onClick: () => toggleDarkMode("dark") },
+        { name: "Light", icon: Sun, onClick: () => toggleTheme("light") }, // Pass 'light' to toggleTheme
+        { name: "Dark", icon: Moon, onClick: () => toggleTheme("dark") }, // Pass 'dark' to toggleTheme
         {
           name: "System",
           icon: Laptop,
-          onClick: () => toggleDarkMode("system"),
+          onClick: () => toggleTheme("system"), // Pass 'system' to toggleTheme
         },
       ],
     },

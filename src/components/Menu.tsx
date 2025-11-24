@@ -1,6 +1,5 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
 import React, { useState } from "react";
 
 export interface MenuItem {
@@ -71,7 +70,7 @@ const Menu: React.FC<MenuProps> = ({
               onMouseEnter={() => item.onHover?.()}
               onMouseLeave={() => item.onLeave?.()}
               className={`
-                flex items-center border border-gray-200 gap-2 px-3 py-2 rounded-lg 
+                flex items-center border border-gray-200  gap-2 px-3 py-2 rounded-lg 
                 transition-colors w-full
                 ${
                   isActive
@@ -95,10 +94,9 @@ const Menu: React.FC<MenuProps> = ({
                 `}
               />
               {!hideMainName && !hasDropdown && (
-                <span className="text-sm font-medium">{item.name}</span>
-              )}
-              {hasDropdown && (
-                <ChevronDown className="w-4 h-4 ml-1 text-gray-400" />
+                <span className="text-sm font-medium text-gray-800 dark:text-gray-300">
+                  {item.name}
+                </span>
               )}
             </button>
 
@@ -151,7 +149,9 @@ const Menu: React.FC<MenuProps> = ({
                           }
                         `}
                       />
-                      <span className="text-sm">{subItem.name}</span>
+                      <span className="text-sm text-gray-800 dark:text-gray-300">
+                        {subItem.name}
+                      </span>
                     </button>
                   );
                 })}

@@ -3,7 +3,6 @@
 import React from "react";
 
 import BookingPage from "@/components/booking/BookingPage";
-import PatientProfile from "@/components/patient/PatientProfile";
 
 const BookingRoute: React.FC = () => {
   return (

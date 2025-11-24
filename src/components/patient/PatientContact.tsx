@@ -16,25 +16,32 @@ export interface Patient {
 interface Props {
   patient: Patient;
 }
-
 const PatientContact: React.FC<Props> = ({ patient }) => (
-  <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
-    <h2 className="text-xl font-bold mb-4">Contact Information</h2>
+  <div className="bg-white dark:bg-gray-500 dark:text-white rounded-2xl shadow-lg p-6">
+    <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
+      Contact Information
+    </h2>
 
     <div className="space-y-3">
       <div className="flex items-center gap-3">
-        <Phone className="text-blue-600" />
-        <span>{patient.phone}</span>
+        <Phone className="text-blue-600 dark:text-blue-400" />
+        <span className="text-gray-800 dark:text-gray-300">
+          {patient.phone}
+        </span>
       </div>
 
       <div className="flex items-center gap-3">
-        <Mail className="text-blue-600" />
-        <span>{patient.email}</span>
+        <Mail className="text-blue-600 dark:text-blue-400" />
+        <span className="text-gray-800 dark:text-gray-300">
+          {patient.email}
+        </span>
       </div>
 
       <div className="flex items-center gap-3">
-        <MapPin className="text-blue-600" />
-        <span>{patient.address}</span>
+        <MapPin className="text-blue-600 dark:text-blue-400" />
+        <span className="text-gray-800 dark:text-gray-300">
+          {patient.address}
+        </span>
       </div>
     </div>
   </div>

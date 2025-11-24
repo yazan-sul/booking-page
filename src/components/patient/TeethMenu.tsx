@@ -72,7 +72,9 @@ const TeethMenu: React.FC<TeethMenuProps> = ({
   const teethSubItems: MenuItem[] = Object.keys(TOOTH_MAPPING).map((key) => ({
     name: TOOTH_MAPPING[key],
     icon: ({ className }: { className?: string }) => (
-      <span className={`w-2 h-2 rounded-full bg-teal-500 block ${className}`} />
+      <span
+        className={`w-2 h-2 rounded-full bg-teal-500  block ${className}`}
+      />
     ),
     onClick: () => setSelectedTooth(key),
     onHover: () => setHoveredTooth(key),

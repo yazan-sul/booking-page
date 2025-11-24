@@ -16,26 +16,33 @@ export interface Patient {
   lastVisit: string;
   nextAppointment: string;
 }
-
 const PatientAppointments: React.FC<Props> = ({ patient }) => (
-  <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
-    <h2 className="text-xl font-bold mb-4">Appointments</h2>
+  <div className="bg-white dark:bg-gray-500 dark:text-white rounded-2xl shadow-lg p-6">
+    <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
+      Appointments
+    </h2>
 
     <div className="space-y-3">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <Calendar className="text-green-600" />
-          <span>Last Visit</span>
+          <Calendar className="text-green-600 dark:text-green-400" />
+          <span className="text-gray-800 dark:text-gray-300">Last Visit</span>
         </div>
-        <span>{patient.lastVisit}</span>
+        <span className="text-gray-800 dark:text-gray-300">
+          {patient.lastVisit}
+        </span>
       </div>
 
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <Calendar className="text-orange-600" />
-          <span>Next Appointment</span>
+          <Calendar className="text-orange-600 dark:text-orange-400" />
+          <span className="text-gray-800 dark:text-gray-300">
+            Next Appointment
+          </span>
         </div>
-        <span>{patient.nextAppointment}</span>
+        <span className="text-gray-800 dark:text-gray-300">
+          {patient.nextAppointment}
+        </span>
       </div>
     </div>
   </div>
