@@ -20,7 +20,7 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({
   onSubmit,
 }) => {
   return (
-    <div className="flex justify-between px-6 md:px-8 py-6 border-t bg-gray-50 dark:bg-gray-700">
+    <div className="fixed bottom-0 left-0 right-0 z-50 flex justify-center space-x-4 px-6 md:px-8 py-6 ">
       <Button
         onClick={onCancel}
         className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500"

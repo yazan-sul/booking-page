@@ -160,7 +160,7 @@ const BookingPage: React.FC = () => {
   const getSelectedDoctor = () => doctors.find((d) => d.id === selectedDoctor);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-4 md:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-green-100 dark:from-gray-900 dark:to-gray-800 p-4 md:p-8">
       <div className="max-w-4xl mx-auto">
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
           {/* Header */}
@@ -179,14 +179,6 @@ const BookingPage: React.FC = () => {
               doctors={doctors}
               selectedService={selectedService}
               selectedDoctor={selectedDoctor}
-              isServiceDropdownOpen={isServiceDropdownOpen}
-              isDoctorDropdownOpen={isDoctorDropdownOpen}
-              onServiceDropdownToggle={() =>
-                setIsServiceDropdownOpen(!isServiceDropdownOpen)
-              }
-              onDoctorDropdownToggle={() =>
-                setIsDoctorDropdownOpen(!isDoctorDropdownOpen)
-              }
               onServiceSelect={handleServiceSelect}
               onDoctorSelect={handleDoctorSelect}
             />
