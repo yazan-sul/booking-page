@@ -1,10 +1,10 @@
-"use client"; // Needed because we'll use useState
+"use client";
 
 import "./globals.css";
 import React, { useState } from "react";
 import NavBar from "@/components/NavBar";
 import Sidebar from "@/components/Sidebar/SideBar";
-import { ThemeProvider } from "@/context/ThemeContext"; // Import the ThemeProvider
+import { ThemeProvider } from "@/context/ThemeContext";
 
 export default function RootLayout({
   children,
